@@ -1,25 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import CardView from "./CardView/card-view";
 import CardDeck from "./lib/CardDeck";
+import Card from "./lib/Card";
 
 function App() {
-    const cardDeck = new CardDeck();
-    console.log(cardDeck.deck);
-    console.log(cardDeck.getCards(5));
-    console.log(cardDeck.deck);
-    console.log(cardDeck.getCards(5))
+    const [cards, setCards] = useState<Card[]>([]);
+
+    const getCards = () => {
+        const cardDeck = new CardDeck();
+        const newCards = cardDeck.getCards(5);
+        setCards(newCards);
+    };
+
+    if (cards.length === 0) {
+        return (
+            <button onClick={getCards}>Раздать колоду</button>
+        );
+    }
   return (
     <div className="App">
         <div className="playingCards faceImages">
-            <CardView rank="K" suit="diams" />
-            <CardView rank="Q" suit="hearts" />
-            <CardView rank="2" suit="clubs" />
-            <CardView rank="10" suit="spades" />
-            <CardView rank="A" suit="clubs" />
+            {cards.map((card) => (
+                <CardView rank={card.rank} suit={card.suit} />
+            ))}
         </div>
+        <button onClick={getCards}>Раздать колоду</button>
     </div>
   );
 }
-
 export default App;

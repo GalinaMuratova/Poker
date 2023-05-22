@@ -15,7 +15,7 @@ const CardView: React.FC<CardViewProps> = props => {
           case 'spades' :
               return '♠';
           default:
-              console.log('Неверное значение');
+              return '';
       }
     };
 
