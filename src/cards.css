@@ -12,8 +12,8 @@
 
 .playingCards .card {
   display: inline-block;
-  width: 3.3em;
-  height: 4.6em;
+  width: 4.5em;
+  height: 6.2em;
   border: 1px solid #666;
   border-radius: .3em;
   -moz-border-radius: .3em;
@@ -323,7 +323,8 @@
 .playingCards.faceImages .card.rank-k,
 .playingCards.faceImages .card.joker {
   background-repeat: no-repeat;
-  background-position: -1em 0;
+  background-position: center;
+  background-size: contain;
   /* @change: smaller cards: more negative distance from the left
      bigger cards: 0 or more positive distance from the left */
 
